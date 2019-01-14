@@ -1,0 +1,8 @@
+{
+  "demo": {
+    "fileUrl": "https://gist.githubusercontent.com/saltyJeff/fc5f1017c1288701b2bf6f6effeef6b0/raw/53dd1856c974e12b7184a61a5bd0548a17c95a56/demo.ino",
+    "defines": {
+      "BLAZE_IT": "420"
+    }
+  }
+}

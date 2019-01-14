@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "additionalProperties": {
+    "description": "Name of the modules",
+    "type": "object",
+    "properties": {
+      "fileUrl": {
+        "type": "string",
+        "description": "The URL to the ino file defining the module"
+      },
+      "defines": {
+        "description": "A String=>String map of preprocessor defines",
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
