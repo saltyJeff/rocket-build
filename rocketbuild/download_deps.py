@@ -1,4 +1,4 @@
-import urllib
+import urllib.request
 import zipfile
 from os import remove
 

@@ -1,5 +1,5 @@
 import re
-import field
+from rocketbuild.field import Field, FieldType, DUE_TYPE_DICT, UNO_TYPE_DICT, EXPLICIT_TYPE_DICT
 
 EXTERN_REGEX = re.compile(r'^\s*extern (unsigned )?([a-z]+) (\w+)\b', re.MULTILINE)
 UPDATE_REGEX = re.compile(r'^\s*void\s+update\s*\(\s*\)\s*\{', re.MULTILINE)
@@ -27,15 +27,15 @@ def rewrite_arduino(inoFile, namespace, defines, dueMode):
         
         fieldType = None
         if dueMode:
-            fieldType = field.DUE_TYPE_DICT.get(fieldTypeName)
+            fieldType = DUE_TYPE_DICT.get(fieldTypeName)
         else:
-            fieldType = field.UNO_TYPE_DICT.get(fieldTypeName)
+            fieldType = UNO_TYPE_DICT.get(fieldTypeName)
         if not fieldType:
-            fieldType = field.EXPLICIT_TYPE_DICT.get(fieldTypeName)
+            fieldType = EXPLICIT_TYPE_DICT.get(fieldTypeName)
         if not fieldType:
             raise RuntimeError('Unknown field '+fieldTypeName+" for "+fieldName)
         nsFieldName = namespace + "_" + fieldName
-        fields.append(field.Field(nsFieldName, fieldTypeName, fieldType))
+        fields.append(Field(nsFieldName, fieldTypeName, fieldType))
         inoFile = inoFile.replace(
             match.group(0), 
             fieldTypeName+"& "+fieldName+" = package."+nsFieldName

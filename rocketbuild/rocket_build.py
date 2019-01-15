@@ -1,11 +1,11 @@
 from os.path import join
-import urllib
-from write_file import write_file
-from rewrite_arduino import rewrite_arduino
-from get_deps import get_deps
-from download_deps import download_deps
-from generate_arduino import generate_arduino
-from generate_python import generate_python
+import urllib.request
+from rocketbuild.write_file import write_file
+from rocketbuild.rewrite_arduino import rewrite_arduino
+from rocketbuild.get_deps import get_deps
+from rocketbuild.download_deps import download_deps
+from rocketbuild.generate_arduino import generate_arduino
+from rocketbuild.generate_python import generate_python
 from time import time
 
 def rocket_build(manifest, args):
