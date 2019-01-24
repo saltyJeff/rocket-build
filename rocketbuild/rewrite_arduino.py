@@ -1,7 +1,7 @@
 import re
 from rocketbuild.field import Field, FieldType, DUE_TYPE_DICT, UNO_TYPE_DICT, EXPLICIT_TYPE_DICT
 
-EXTERN_REGEX = re.compile(r'^\s*extern (unsigned )?([a-z]+) (\w+)\b', re.MULTILINE)
+EXTERN_REGEX = re.compile(r'^\s*extern (unsigned )?([a-zA-Z0-9_]+) (\w+)\b', re.MULTILINE)
 REFRESH_REGEX = re.compile(r'^\s*void\s+refresh\s*\(\s*\)\s*\{', re.MULTILINE)
 INITIALIZE_REGEX = re.compile(r'^\s*void\s+initialize\s*\(\s*\)\s*\{', re.MULTILINE)
 def rewrite_arduino(inoFile, namespace, defines, dueMode):
