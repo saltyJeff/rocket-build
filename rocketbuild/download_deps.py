@@ -9,5 +9,9 @@ def download_deps(deps, libFolder):
         zipFile = zipfile.ZipFile('temp.zip')
         zipFile.extractall(libFolder)
         zipFile.close()
-    remove('temp.zip')
+    
+    try:
+        remove('temp.zip')
+    except:
+        print('no dependencies to download')
     return
