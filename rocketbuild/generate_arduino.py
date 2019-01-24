@@ -12,13 +12,13 @@ unsigned long last_update = 0;
 """
     for ns in namespaces:
         methods += "extern void "+ns+"_initialize();\n"
-        methods += "extern void "+ns+"_update();\n"
+        methods += "extern void "+ns+"_refresh();\n"
     methods += 'void initialize () {\n'
     for ns in namespaces:
         methods += ns+"_initialize();\n"
     methods += """}
-void update () {\n"""
+void refresh () {\n"""
     for ns in namespaces:
-        methods += ns+"_update();\n"
+        methods += ns+"_refresh();\n"
     methods += 'last_update = millis();\n}'
     return (package, methods)
