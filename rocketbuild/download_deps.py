@@ -21,6 +21,11 @@ def download_deps(deps, libFolder):
         folderPath = path.join(libFolder, folder)
         if path.isdir(folderPath):
             newName = re.sub(INVALID, '', folder)
-            rename(folderPath, path.join(libFolder, newName))
+            try:
+                rename(folderPath, path.join(libFolder, newName))
+            except:
+                print('duplicate found, deleting old one')
+                remove(path.join(libFolder, newName))
+                rename(folderPath, path.join(libFolder, newName))
             print('renamed '+folder+' to '+newName)
     return
