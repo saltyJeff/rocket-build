@@ -44,4 +44,6 @@ def rewrite_arduino(inoFile, namespace, defines, dueMode):
     # rename the method stubs
     inoFile = re.sub(INITIALIZE_REGEX, 'void '+namespace+'_initialize () {', inoFile)
     inoFile = re.sub(REFRESH_REGEX, 'void '+namespace+'_refresh () {', inoFile)
+    # get rid of \r's
+    inoFile = inoFile.replace('\r', '')
     return (inoFile, fields)

@@ -6,6 +6,7 @@ from rocketbuild.get_deps import get_deps
 from rocketbuild.download_deps import download_deps
 from rocketbuild.generate_arduino import generate_arduino
 from rocketbuild.generate_python import generate_python
+from rocketbuild.generate_dump import generate_dump # hehe.. dump
 from time import time
 
 def rocket_build(manifest, args):
@@ -34,6 +35,7 @@ def rocket_build(manifest, args):
     (package, methods) = generate_arduino(manifest.keys(), fields)
     write_file(package, join(arduinoPath, 'package.h'))
     write_file(methods, join(arduinoPath, 'package_update.ino'))
+    write_file(generate_dump(fields), join(arduinoPath, 'dump.ino'))
     
     print('---------Generating python code---------')
     write_file(generate_python(fields), join(pythonPath, 'data_package.py'))
