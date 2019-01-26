@@ -1,6 +1,7 @@
 import urllib.request
 import zipfile
-from os import remove, rename, listdir, path
+from os import rename, listdir, path
+from shutil import rmtree
 import re
 
 INVALID = re.compile(r'-.*', re.MULTILINE)
@@ -25,7 +26,7 @@ def download_deps(deps, libFolder):
                 rename(folderPath, path.join(libFolder, newName))
             except:
                 print('duplicate found, deleting old one')
-                remove(path.join(libFolder, newName))
+                rmtree(path.join(libFolder, newName))
                 rename(folderPath, path.join(libFolder, newName))
             print('renamed '+folder+' to '+newName)
     return
