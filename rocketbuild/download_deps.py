@@ -1,6 +1,6 @@
 import urllib.request
 import zipfile
-from os import rename, listdir, path
+from os import remove, rename, listdir, path
 from shutil import rmtree
 import re
 
