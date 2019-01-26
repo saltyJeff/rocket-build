@@ -22,4 +22,5 @@ def download_deps(deps, libFolder):
         if path.isdir(folderPath):
             newName = re.sub(INVALID, '', folder)
             rename(folderPath, path.join(libFolder, newName))
+            print('renamed '+folder+' to '+newName)
     return

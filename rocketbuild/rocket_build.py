@@ -34,12 +34,16 @@ def rocket_build(manifest, args):
     print('---------Generating arduino code---------')
     (package, methods) = generate_arduino(manifest.keys(), fields)
     write_file(package, join(arduinoPath, 'package.h'))
+    print('generated package.h')
     write_file(methods, join(arduinoPath, 'package_update.ino'))
+    print('generated package_update.ino')
     write_file(generate_dump(fields), join(arduinoPath, 'dump.ino'))
-    
+    print('generated dump.ino')
+
     print('---------Generating python code---------')
     write_file(generate_python(fields), join(pythonPath, 'data_package.py'))
-    
+    print('generated data_package.py')
+
     print('----------------------------------------------')
     print('Build complete in '+str(time() - startTime)+'s')
     print('----------------------------------------------')
