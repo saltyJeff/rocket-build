@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import argparse
 from rocketbuild.sketchbook_dir import sketchbook_dir
 from rocketbuild.rocket_build import rocket_build
@@ -20,6 +19,3 @@ def main():
         data = json.load(f)
 
     rocket_build(data, args)
-
-if __name__ == '__main__':
-    main()
